@@ -2,7 +2,7 @@
   "domain": "fight.me.at",
   "network": "me.at",
   "generator": "@repo/app-shell/repo-fleet",
-  "contentHash": "fb1e8f89888fc0ede27720989eb2c0b4cefe415c9b2990e58cdd579297224a29",
+  "contentHash": "8c1e212b290b789afe64b8bcc5af58f6b84ed86be0bbad379020c4fcbfe515bb",
   "lastSyncedAt": "2026-10-20",
   "paths": [
     ".github/CODEOWNERS",
