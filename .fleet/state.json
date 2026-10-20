@@ -1,0 +1,28 @@
+{
+  "domain": "fight.me.at",
+  "network": "me.at",
+  "generator": "@repo/app-shell/repo-fleet",
+  "contentHash": "fb1e8f89888fc0ede27720989eb2c0b4cefe415c9b2990e58cdd579297224a29",
+  "lastSyncedAt": "2026-10-20",
+  "paths": [
+    ".github/CODEOWNERS",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/ISSUE_TEMPLATE/feature_request.yml",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/assets/flow-dark.svg",
+    ".github/assets/flow.svg",
+    ".github/assets/overview-dark.svg",
+    ".github/assets/overview.svg",
+    ".github/dependabot.yml",
+    ".github/workflows/docs-refresh.yml",
+    ".github/workflows/link-check.yml",
+    ".gitignore",
+    "ACTIVITY.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "package.json",
+    "src/index.ts"
+  ]
+}

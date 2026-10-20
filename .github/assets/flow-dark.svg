@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="232" viewBox="0 0 880 232" role="img" aria-label="How fight.me.at works: Write, then Order, then Relay, then Catch up, then Converge">
+<rect x="0.5" y="0.5" width="879" height="231" rx="12" fill="#0a0a0a" stroke="#262626"/>
+<rect x="24" y="24" width="144" height="145" rx="10" fill="#171717" stroke="#262626"/>
+<text x="40" y="56" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#525252" opacity="1">01</text>
+<text x="40" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#fafafa" font-weight="600"><tspan x="40" dy="0">Write</tspan></text>
+<text x="40" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#a3a3a3"><tspan x="40" dy="0">A per-tab writer</tspan><tspan x="40" dy="19">edits its local</tspan><tspan x="40" dy="19">copy.</tspan></text>
+<path d="M174 96.5 H188" stroke="#525252" stroke-width="1.5"/><path d="M184 92.5 L190 96.5 L184 100.5" fill="none" stroke="#525252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="196" y="24" width="144" height="145" rx="10" fill="#171717" stroke="#262626"/>
+<text x="212" y="56" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#525252" opacity="1">02</text>
+<text x="212" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#fafafa" font-weight="600"><tspan x="212" dy="0">Order</tspan></text>
+<text x="212" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#a3a3a3"><tspan x="212" dy="0">Wall time, then</tspan><tspan x="212" dy="19">actor id, then</tspan><tspan x="212" dy="19">value.</tspan></text>
+<path d="M346 96.5 H360" stroke="#525252" stroke-width="1.5"/><path d="M356 92.5 L362 96.5 L356 100.5" fill="none" stroke="#525252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="368" y="24" width="144" height="145" rx="10" fill="#171717" stroke="#262626"/>
+<text x="384" y="56" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#525252" opacity="1">03</text>
+<text x="384" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#fafafa" font-weight="600"><tspan x="384" dy="0">Relay</tspan></text>
+<text x="384" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#a3a3a3"><tspan x="384" dy="0">Opaque updates</tspan><tspan x="384" dy="19">pass between</tspan><tspan x="384" dy="19">peers.</tspan></text>
+<path d="M518 96.5 H532" stroke="#525252" stroke-width="1.5"/><path d="M528 92.5 L534 96.5 L528 100.5" fill="none" stroke="#525252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="540" y="24" width="144" height="145" rx="10" fill="#171717" stroke="#262626"/>
+<text x="556" y="56" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#525252" opacity="1">04</text>
+<text x="556" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#fafafa" font-weight="600"><tspan x="556" dy="0">Catch up</tspan></text>
+<text x="556" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#a3a3a3"><tspan x="556" dy="0">The outbox</tspan><tspan x="556" dy="19">drains, missed</tspan><tspan x="556" dy="19">updates apply.</tspan></text>
+<path d="M690 96.5 H704" stroke="#525252" stroke-width="1.5"/><path d="M700 92.5 L706 96.5 L700 100.5" fill="none" stroke="#525252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="712" y="24" width="144" height="145" rx="10" fill="#fafafa"/>
+<text x="728" y="56" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#0a0a0a" opacity="0.6">05</text>
+<text x="728" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#0a0a0a" font-weight="600"><tspan x="728" dy="0">Converge</tspan></text>
+<text x="728" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0a0a0a" opacity="0.8"><tspan x="728" dy="0">Every peer</tspan><tspan x="728" dy="19">reaches the same</tspan><tspan x="728" dy="19">document.</tspan></text>
+
+<text x="24" y="199" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#525252"><tspan x="24" dy="0">The relay is written but has never been deployed. The convergence code is tested and runs in your browser today.</tspan></text>
+</svg>

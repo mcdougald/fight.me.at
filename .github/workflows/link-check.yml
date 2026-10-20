@@ -1,0 +1,29 @@
+name: Link check
+
+on:
+  schedule:
+    - cron: '31 5 * * 3'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: link-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check Markdown links
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.repository_owner == 'mcdougald'
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --accept 200,206,429 './**/*.md'
+          fail: true

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="302" viewBox="0 0 880 302" role="img" aria-label="fight.me.at at a glance: Converges in any order, No server picks a winner, Offline is not special, Honest about its state">
+<rect x="0.5" y="0.5" width="879" height="301" rx="12" fill="#ffffff" stroke="#e5e5e5"/>
+<rect x="24" y="24" width="196" height="254" rx="10" fill="#fafafa" stroke="#e5e5e5"/>
+<text x="44" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#a3a3a3">01</text>
+<line x1="72" y1="56" x2="200" y2="56" stroke="#d4d4d4" stroke-width="1"/>
+<text x="44" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#0a0a0a" font-weight="600"><tspan x="44" dy="0">Converges in</tspan><tspan x="44" dy="22">any order</tspan></text>
+<text x="44" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#525252"><tspan x="44" dy="0">A last-writer-wins</tspan><tspan x="44" dy="21">map with a total</tspan><tspan x="44" dy="21">order, so clients</tspan><tspan x="44" dy="21">applying the same</tspan><tspan x="44" dy="21">updates reach the</tspan><tspan x="44" dy="21">same document.</tspan></text>
+<rect x="236" y="24" width="196" height="254" rx="10" fill="#fafafa" stroke="#e5e5e5"/>
+<text x="256" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#a3a3a3">02</text>
+<line x1="284" y1="56" x2="412" y2="56" stroke="#d4d4d4" stroke-width="1"/>
+<text x="256" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#0a0a0a" font-weight="600"><tspan x="256" dy="0">No server picks</tspan><tspan x="256" dy="22">a winner</tspan></text>
+<text x="256" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#525252"><tspan x="256" dy="0">The relay is</tspan><tspan x="256" dy="21">specified to move</tspan><tspan x="256" dy="21">opaque updates</tspan><tspan x="256" dy="21">between clients and</tspan><tspan x="256" dy="21">never interpret them.</tspan></text>
+<rect x="448" y="24" width="196" height="254" rx="10" fill="#fafafa" stroke="#e5e5e5"/>
+<text x="468" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#a3a3a3">03</text>
+<line x1="496" y1="56" x2="624" y2="56" stroke="#d4d4d4" stroke-width="1"/>
+<text x="468" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#0a0a0a" font-weight="600"><tspan x="468" dy="0">Offline is not</tspan><tspan x="468" dy="22">special</tspan></text>
+<text x="468" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#525252"><tspan x="468" dy="0">A disconnected client</tspan><tspan x="468" dy="21">keeps writing</tspan><tspan x="468" dy="21">locally, and an</tspan><tspan x="468" dy="21">outbox drains when it</tspan><tspan x="468" dy="21">reconnects.</tspan></text>
+<rect x="660" y="24" width="196" height="254" rx="10" fill="#fafafa" stroke="#e5e5e5"/>
+<text x="680" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#a3a3a3">04</text>
+<line x1="708" y1="56" x2="836" y2="56" stroke="#d4d4d4" stroke-width="1"/>
+<text x="680" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#0a0a0a" font-weight="600"><tspan x="680" dy="0">Honest about</tspan><tspan x="680" dy="22">its state</tspan></text>
+<text x="680" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#525252"><tspan x="680" dy="0">The convergence code</tspan><tspan x="680" dy="21">runs in your browser.</tspan><tspan x="680" dy="21">The websocket relay</tspan><tspan x="680" dy="21">is written but never</tspan><tspan x="680" dy="21">deployed.</tspan></text>
+</svg>

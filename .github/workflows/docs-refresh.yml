@@ -1,0 +1,149 @@
+# Improve this repository's documentation once a week.
+#
+# The cron is DAILY; the `gate` job picks one pseudo-random day per repo per week
+# (see sha256 below). Randomness cannot be expressed in cron, and a fixed day would
+# stampede the whole fleet at once.
+#
+# ⚠ IF THIS REPOSITORY IS A PIPELINE-OWNED SHOWCASE (it carries `.fleet/state.json`
+# and no `.github/.fleet-managed.json`), A MERGED DOCS PR WILL NOT SURVIVE. The
+# whole tree is re-rendered and re-committed on every content drift, and editing
+# the remote does not change the render — so the next reconcile overwrites the
+# merged docs and the loop repeats. Landing a doc change durably means changing
+# the generator (`packages/app-shell/src/repo-fleet/scaffold.ts`) in the me.at
+# monorepo, not this file and not this repository.
+name: docs refresh
+
+on:
+  schedule:
+    - cron: '23 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-refresh-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    name: Is today this repo's day?
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    if: github.repository_owner == 'mcdougald'
+    outputs:
+      run: ${{ steps.pick.outputs.run }}
+      has_key: ${{ steps.key.outputs.has_key }}
+    steps:
+      # The `secrets` context is NOT available in a job-level `if:`, so the key's
+      # presence is resolved here and consumed downstream via `needs`.
+      - name: Check for the API key
+        id: key
+        env:
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -n "$KEY" ]; then
+            echo "has_key=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_key=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::ANTHROPIC_API_KEY is not set — docs refresh skipped."
+          fi
+
+      - name: Pick the day
+        id: pick
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Stable within an ISO week, different across weeks and across repos.
+          seed="${{ github.repository }}@$(date -u +%G-W%V)"
+          digest="$(printf '%s' "$seed" | sha256sum | cut -c1-8)"
+          picked=$(( 0x$digest % 7 ))
+          today=$(( $(date -u +%u) % 7 ))
+          echo "seed=$seed picked=$picked today=$today"
+          if [ "$picked" -eq "$today" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  improve:
+    name: Improve the docs
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && needs.gate.outputs.has_key == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Improve documentation
+        uses: anthropics/claude-code-action@v1
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        with:
+          prompt: |
+            Improve this repository's documentation. You may edit ONLY:
+            README.md, SECURITY.md, CONTRIBUTING.md, and anything under docs/.
+
+            Do, in priority order:
+              1. Fix statements that contradict the code in this repository.
+              2. Repair dead links, stale paths, and wrong command names.
+              3. Fill genuine gaps — an undocumented script, an unexplained
+                 configuration file, a setup step a newcomer would stumble on.
+              4. Tighten wording. Shorter is better.
+
+            Do NOT: invent features that do not exist, add roadmap or marketing
+            copy, restructure files wholesale, or touch any file outside the
+            list above. If the docs are already accurate, change nothing —
+            an empty diff is a valid and expected outcome.
+
+      - name: Refuse changes outside the doc set
+        shell: bash
+        run: |
+          set -euo pipefail
+          # `git diff --name-only` reports TRACKED modifications only, and
+          # create-pull-request below stages everything with `git add -A` — so a
+          # NEWLY CREATED file would sail past a tracked-only check and land in the
+          # PR unreviewed by this guard. The prompt actively invites creating files
+          # ("fill genuine gaps"), so this is the common case, not the exotic one.
+          # Stage first, then read the INDEX: additions show up as adds.
+          git add -A
+          changed="$(git diff --cached --name-only)"
+          if [ -z "$changed" ]; then
+            echo "No changes — nothing to do."
+            exit 0
+          fi
+          bad="$(printf '%s\n' "$changed" \
+            | grep -vE '^(README\.md|SECURITY\.md|CONTRIBUTING\.md|docs/)' || true)"
+          if [ -n "$bad" ]; then
+            echo "::error::docs-refresh touched non-doc paths:"
+            printf '%s\n' "$bad"
+            exit 1
+          fi
+          printf 'Doc-only changes:\n%s\n' "$changed"
+
+      - name: Open the pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: docs/weekly-refresh
+          delete-branch: false
+          commit-message: 'docs: weekly documentation refresh'
+          title: 'docs: weekly documentation refresh'
+          labels: |
+            documentation
+            automated
+          body: |
+            Automated weekly documentation pass.
+
+            Scope is enforced by CI: this PR can only touch `README.md`,
+            `SECURITY.md`, `CONTRIBUTING.md` and `docs/`. Review it like any
+            other change — an automated author is not a reviewed one.

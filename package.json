@@ -1,0 +1,7 @@
+{
+  "name": "fight-me-at",
+  "description": "Design doc and in-browser demo for realtime collaborative state that converges over CRDTs",
+  "homepage": "https://fight.me.at",
+  "private": false,
+  "license": "SEE LICENSE IN LICENSE"
+}
