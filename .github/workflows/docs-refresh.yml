@@ -83,7 +83,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Improve documentation
         uses: anthropics/claude-code-action@v1
@@ -132,7 +132,7 @@ jobs:
           printf 'Doc-only changes:\n%s\n' "$changed"
 
       - name: Open the pull request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: docs/weekly-refresh
           delete-branch: false
