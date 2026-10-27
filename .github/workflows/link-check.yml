@@ -20,7 +20,7 @@ jobs:
     if: github.repository_owner == 'mcdougald'
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Check links
         uses: lycheeverse/lychee-action@v2
